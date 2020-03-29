@@ -67,7 +67,7 @@ for (let i=0; i < 5; i++) {
 }
 
 //console.log(a + b); //error!!
-console.log(c); //3 (because it's not a block-scoped!)
+//console.log(c); //3 (because it's not a block-scoped!)
 
 // ES5 
 (function() {
@@ -76,9 +76,32 @@ console.log(c); //3 (because it's not a block-scoped!)
 
 //console.log(c);
 
+/////////////////////////////////////////////////
+
+// Lecture: Strings
+
+let firstName = 'john';
+let lastName = 'Smith';
+const yearOfBirth = 1990;
+
+function calcAge(year) {
+	return 2016 - year;
+}
+
+// ES5 
+console.log('This is ' + firstName + ' '+lastName + '. He was born in ' + yearOfBirth+ 'today is his btday.');
 
 
+//ES 6
+console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today he is ${calcAge(yearOfBirth)} year old.`);
 
+const n = `${firstName} ${lastName}`;
+console.log(n.startsWith('j')); //True
+console.log(n.startsWith('n')); //false
+console.log(n.endsWith('Sm'));
+console.log(n.includes('oh'));
+console.log(firstName.repeat(5));
+console.log(`${firstName} `.repeat(3));
 
 
 
