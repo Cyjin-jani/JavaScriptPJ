@@ -139,29 +139,29 @@ console.log(ages6);
 // Lecture: Arrow Functions 2
 
 // ES5
-
+/*
 var box5 = {
 	color: 'green',
 	position: 1,
 	clickMe: function() {
 		
 		//with just this, it would be 'undefined' (cuz this will focus on global object)
-		/*document.querySelector('.green').addEventListener('click', function() {
+		document.querySelector('.green').addEventListener('click', function() {
 				var str = 'This is box number '+ this.position +' and it is ' + this.color;
 				alert(str);
-		});*/ 
+		}); 
  		var self = this;
 		document.querySelector('.green').addEventListener('click', function() {
 				var str = 'This is box number '+ self.position +' and it is ' + self.color;
 				alert(str);
 		});
 	}
-};
+};*/
 
 //box5.clickMe();
 
 // ES6
-
+/*
 const box6 = {
 	color: 'green',
 	position: 1,
@@ -174,7 +174,7 @@ const box6 = {
 	}
 };
 
-box6.clickMe();
+box6.clickMe();*/
 
 /*//this also would be undefined.... 
 const box66 = {
@@ -191,7 +191,7 @@ const box66 = {
 
 box66.clickMe();*/
 
-
+/*
 function Person(name) {
 	this.name = name;
 }
@@ -219,6 +219,162 @@ Person.prototype.myFriends6 = function(friends) {
 };
 
 new Person('Mike').myFriends6(friends);
+
+*/
+
+//////////////////////////////////////////////////////
+// Lecture: Destructuring
+
+// ES5
+var john = ['John', 26];
+//var name = john[0];
+//var age = john[1];
+
+
+// ES6
+
+const [name, age] = ['John', 26];
+console.log(name);
+console.log(age);
+
+const obj = {
+	firstName: 'John',
+	lastName: 'Smith'
+};
+
+const {firstName, lastName} = obj;
+console.log(firstName);
+console.log(lastName);
+
+const {firstName: a, lastName: b} = obj;
+console.log(a);
+console.log(b);
+
+
+
+function calcAgeRetirement(year) {
+	const age = new Date().getFullYear() - year;
+	return [age, 65 - age];
+}
+
+const [age2, retirement] = calcAgeRetirement(1990);
+
+console.log(age2);
+console.log(retirement);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
