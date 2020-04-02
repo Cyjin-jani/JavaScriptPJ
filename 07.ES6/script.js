@@ -46,12 +46,12 @@ function driverLicense6(passedTest) {
 driverLicense6(true);
 
 //var i = 23; both i is var, then the result will be 5 (the last one.)
-let i = 23;
+/*let i = 23;
 
 for (let i=0; i < 5; i++) {
 	//console.log(i); // 0, 1, 2, 3, 4
 }
-
+*/
 //console.log(i); //23 (because of block scoped!) It's completely diff variable.
 
 
@@ -224,7 +224,7 @@ new Person('Mike').myFriends6(friends);
 
 //////////////////////////////////////////////////////
 // Lecture: Destructuring
-
+/*
 // ES5
 var john = ['John', 26];
 //var name = john[0];
@@ -263,23 +263,69 @@ console.log(age2);
 console.log(retirement);
 
 
+*/
+
+
+////////////////////////////////////////////////////////
+// Lecture: Arrays
+
+const boxes = document.querySelectorAll('.box');
+
+//ES5
+
+var boxesArr5 = Array.prototype.slice.call(boxes);
+/*
+boxesArr5.forEach(function(cur) {
+	cur.style.backgroundColor = 'dodgerblue';
+});
+*/
+
+//ES6
+
+const boxesArr6 = Array.from(boxes);
+//boxesArr6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+//above codes can be written only one line!
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+//Change words in boxes
+//ES 5
+/*for (var i=0; i < boxesArr5.length; i++) {
+
+	if(boxesArr5[i].className === 'box blue') {
+		continue;
+		//break;
+	}
+
+	boxesArr5[i].textContent = 'I changed to blue!';
+};*/
+
+//ES6
+for (const cur of boxesArr6) {
+	if (cur.className === 'box blue') {
+		continue;
+	}
+	//and maybe can use [includes]method
+	//if(cur.className.includes('blue'))
+	cur.textContent = 'I changed to blue!';
+}
 
 
 
+// ES5
+var ages = [12, 17, 8, 21, 14, 11];
 
+var full = ages.map(function(cur) {
+	return cur >= 18;
+});
 
+console.log(full);
+console.log(full.indexOf(true)); // which one?
+console.log(ages[full.indexOf(true)]); //how old ?
 
-
-
-
-
-
-
-
-
-
-
-
+//ES6
+console.log('Result:'+ages.findIndex(cur => cur >= 18)); // for index
+console.log(ages.find(cur => cur >= 18)); //for value
 
 
 
