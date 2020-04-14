@@ -268,18 +268,18 @@ console.log(retirement);
 
 ////////////////////////////////////////////////////////
 // Lecture: Arrays
-
+/*
 const boxes = document.querySelectorAll('.box');
 
 //ES5
 
-var boxesArr5 = Array.prototype.slice.call(boxes);
+var boxesArr5 = Array.prototype.slice.call(boxes);*/
 /*
 boxesArr5.forEach(function(cur) {
 	cur.style.backgroundColor = 'dodgerblue';
 });
 */
-
+/*
 //ES6
 
 const boxesArr6 = Array.from(boxes);
@@ -287,7 +287,7 @@ const boxesArr6 = Array.from(boxes);
 
 //above codes can be written only one line!
 Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
-
+*/
 //Change words in boxes
 //ES 5
 /*for (var i=0; i < boxesArr5.length; i++) {
@@ -299,7 +299,7 @@ Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
 
 	boxesArr5[i].textContent = 'I changed to blue!';
 };*/
-
+/*
 //ES6
 for (const cur of boxesArr6) {
 	if (cur.className === 'box blue') {
@@ -309,9 +309,9 @@ for (const cur of boxesArr6) {
 	//if(cur.className.includes('blue'))
 	cur.textContent = 'I changed to blue!';
 }
+*/
 
-
-
+/*
 // ES5
 var ages = [12, 17, 8, 21, 14, 11];
 
@@ -329,19 +329,42 @@ console.log(ages.find(cur => cur >= 18)); //for value
 
 
 
+*/
 
 
 
 
+/////////////////////////////////////////////////////
+// Lecture : Spread operator
+
+function addFourAges (a, b, c, d) {
+	return a + b + c + d;
+}
+
+var sum1 = addFourAges(18, 30, 12, 21);
+console.log(sum1);
+
+//ES5
+var ages = [18, 30, 12, 21];
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+//ES6
+const sum3 = addFourAges(...ages);
+console.log(sum3);
 
 
+const familySmith = ['John', 'Jane', 'Mark'];
+const familyMiller = ['Mary', 'Bob', 'Ann'];
 
+const bigFamily = [...familySmith, 'Lily', ...familyMiller];
+console.log(bigFamily);
 
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+const all = [h, ...boxes];
 
-
-
-
-
+Array.from(all).forEach(cur => cur.style.color = 'purple');
 
 
 
