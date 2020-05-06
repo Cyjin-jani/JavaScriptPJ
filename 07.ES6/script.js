@@ -27,23 +27,23 @@ function driverLicense5(passedTest) {
 /* this is not work! because var is function scope!
 console.log(firstName + ', born in '+yearOfBirth+', is now officially allowed to drive a car');*/
 
-driverLicense5(true);
+//driverLicense5(true);
 
 // ES6 (block scoped)
 function driverLicense6(passedTest) {
 	
 	//console.log(firstName); --> error (cannot access)
-	let firstName = 'John';
-	const yearOfBirth = 1990; 
+	//let firstName = 'John';
+	//const yearOfBirth = 1990; 
 
 	if (passedTest) {
-		firstName = 'John';
+//		firstName = 'John';
 	}
 
 	//console.log(firstName + ', born in '+yearOfBirth+', is now officially allowed to drive a car'); //--> this will be error because let or const is block scope!
 }
 
-driverLicense6(true);
+//driverLicense6(true);
 
 //var i = 23; both i is var, then the result will be 5 (the last one.)
 /*let i = 23;
@@ -476,7 +476,7 @@ question.set(true, 'Correct answer! :D');
 question.set(false, 'Wrong! Please try again!');
 
 
-console.log(question.get('question'));
+//console.log(question.get('question'));
 //console.log(question.size);
 
 if(question.has(4)) {
@@ -565,7 +565,7 @@ Person6.greeting();
 /////////////////////////////////////////////////////
 // Lecture : Classes with subclass
 
-
+/*
 //ES5
 var Person5 = function(name, yearOfBirth, job) {
 	this.name = name;
@@ -632,37 +632,225 @@ johnAthlete6.wonMedal();
 johnAthlete6.calculateAge();
 
 
+*/
+
+/////////////////////////////////
+// CODING CHALLENGE
+
+/*
+Suppose that you're working in a small town administration, and you're in charge of two town elements:
+1. Parks
+2. Streets
+
+It's a very small town, so right now there are only 3 parks and 4 streets. All parks and streets have a name and a build year.
+
+At an end-of-year meeting, your boss wants a final report with the following:
+
+1. Tree density of each park in the town (forumla: number of trees/park area)
+
+2. Average age of each town's park (forumla: sum of all ages/number of parks)
+
+3. The name of the park that has more than 1000 trees
+
+4. Total and average length of the town's streets
+
+5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
+
+All the report data should be printed to the console.
+
+HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
+*/
+
+///////////////////////////////////////////////
+// My solution 
+/*
+class Elements {
+	constructor (name, buildYear) {
+		this.name = name;
+		this.buildYear = buildYear;
+	}
+
+	calcAge() {
+		var age = new Date().getFullYear() - this.buildYear;
+		return age;
+	}
+} 
+
+class Parks extends Elements {
+	constructor (name, buildYear, treesNum, parkArea) {
+		super(name, buildYear);
+		this.treesNum = treesNum;
+		this.parkArea = parkArea;
+	}
+
+	treeDensity() {
+		return this.treesNum / this.parkArea ; 
+	}
+
+	treesMoreThousands() {
+		if (this.treesNum >= 1000 ) {
+			return console.log(`${this.name} has more than 1000 trees.`);
+		}
+	}
+}
+
+class Streets extends Elements {
+	constructor (name, buildYear, length, size) {
+		super(name, buildYear);
+		size === undefined ? size = 'normal' : size = size;
+		this.length = length;
+		this.size = size;
+	}
+}
 
 
+const parkOne = new Parks("A Park", 1990, 1500, 500);
+const parkTwo = new Parks("B Park", 2000, 800, 400);
+const parkThree = new Parks("C Park", 2010, 2000, 600);
+
+const StreetA = new Streets("A street", 1999, 15, "huge");
+const StreetB = new Streets("B street", 1970, 50, "big");
+const StreetC = new Streets("C street", 1950, 45);
+const StreetD = new Streets("D street", 2000, 10);
+
+reportPark();
+reportStreet();
 
 
+function reportPark() {
+	
+	const parkAges = new Map();
+
+	parkAges.set('parkOne', parkOne.calcAge());
+	parkAges.set('parkTwo', parkTwo.calcAge());
+	parkAges.set('parkThree', parkThree.calcAge());
+
+	const allAges = parkAges.get('parkOne') + parkAges.get('parkTwo') + parkAges.get('parkThree');
+
+	const avgAge = allAges / parkAges.size ; 
+
+	console.log("-----PARKS REPORT-----");
+	console.log(`Our ${parkAges.size} parks have an average age of ${avgAge} years.`);
+	
+	console.log(`${parkOne.name} has a tree density of ${parkOne.treeDensity()} tress per square km`);
+	console.log(`${parkTwo.name} has a tree density of ${parkTwo.treeDensity()} tress per square km`);	
+	console.log(`${parkThree.name} has a tree density of ${parkThree.treeDensity()} tress per square km`);	
+	
+	parkOne.treesMoreThousands();
+	parkTwo.treesMoreThousands();
+	parkThree.treesMoreThousands();
+
+}
+
+function reportStreet() {
+	
+	const streetLength = new Map();
+
+	streetLength.set('StreetA', StreetA.length);
+	streetLength.set('StreetB', StreetB.length);
+	streetLength.set('StreetC', StreetC.length);
+	streetLength.set('StreetD', StreetD.length);
+
+	const totalLengths = streetLength.get('StreetA') + streetLength.get('StreetB') + streetLength.get('StreetC') + streetLength.get('StreetD');
+
+	const avgLengths =  totalLengths / streetLength.size;
+
+	console.log("-----STREETS REPORT-----");
+	console.log(`Our ${streetLength.size} streets have a total length of ${totalLengths} km, with an average of ${avgLengths} km.`);
+
+	console.log(`${StreetA.name}, built in ${StreetA.buildYear}, is a ${StreetA.size} street`);
+	console.log(`${StreetB.name}, built in ${StreetB.buildYear}, is a ${StreetB.size} street`);
+	console.log(`${StreetC.name}, built in ${StreetC.buildYear}, is a ${StreetC.size} street`);
+	console.log(`${StreetD.name}, built in ${StreetD.buildYear}, is a ${StreetD.size} street`);
+}
+*/
 
 
+///////////////////////////////////////////////
+// Teacher's solution 
+
+class Element {
+	constructor(name, buildYear) {
+		this.name = name;
+		this.buildYear = buildYear;
+	}
+}
+
+class Park extends Element {
+	constructor(name, buildYear, area, numTrees) {
+		super(name, buildYear);
+		this.area = area; //km2
+		this.numTrees = numTrees;
+	}
+
+	treeDensity() {
+		const density = this.numTrees / this.area;
+		console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+	}
+}
+
+class Street extends Element {
+	constructor(name, buildYear, length, size = 3) {
+		super(name, buildYear);
+		
+		this.length = length;
+		this.size = size;
+	}
+
+	classifyStreet() {
+		const classification = new Map();
+		classification.set(1, 'tiny');
+		classification.set(2, 'small');
+		classification.set(3, 'normal');
+		classification.set(4, 'big');
+		classification.set(5, 'huge');
+		console.log(`${this.name}, built in ${this.buildYear}, is a ${classification.get(this.size)} street.`);
+	}
+}
+
+const allParks = [new Park('Green Park', 1987, 0.2, 215), new Park('National Park', 1894, 2.9, 3541), new Park('Oak Park', 1953, 0.4, 949)];
+
+const allStreets = [new Street('Ocean Avenue', 1999, 1.1, 4), new Street('Evergreen Street', 2008, 2.7, 2), new Street('4th Street', 2015, 0.8), new Street('Sunset Boulevard', 1982, 2.5, 5)];
 
 
+function calc(arr) {
+
+	const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+
+	return [sum, sum / arr.length ];
+} 
 
 
+function reportParks(p) {
+
+	console.log('-----PARKS REPORT-----');
+
+	//Density
+	p.forEach(el => el.treeDensity());
+	//Average age
+	const ages = p.map(el => new Date().getFullYear() - el.buildYear);
+	const [totalAge, avgAge] = calc(ages);
+	console.log(`Our ${p.length} parks have an average of ${avgAge} years. `);
+	//Which park has more than 1000 trees
+	const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+	console.log(`${p[i].name} has more than 1000 trees.`);
+}
+
+function reportStreets(s) {
+
+	console.log('-----STREETS REPORT-----');
+
+	//Total and average length of the town's streets
+	const [totalLength, avgLength] = calc(s.map(el => el.length));
+	console.log(`Our ${s.length} streets have a total length of ${totalLength} km, with an average of ${avgLength} km.`);
+	
+	//Classify sizes
+	s.forEach(el => el.classifyStreet());
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+reportParks(allParks);
+reportStreets(allStreets);
 
 
 
