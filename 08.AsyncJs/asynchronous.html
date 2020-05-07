@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asynchronous JavaScript</title>
+</head>
+<body>
+    <h1>Asynchronous JavaScript</h1>
+    <p>- Allow Asynchronous functions to run in the "background"</p>
+    <p>- We pass in callbacks that run once the function has finished its work</p>
+    <p>- Move on immediately: Non-blocking!</p>
+    <script>
+        const second = () => {
+           setTimeout(() => {
+            console.log('Async Hey there!');
+           }, 2000);
+        }
+
+       const first = () => {
+           console.log('Hey there');
+           second();
+           console.log('The END');
+       } 
+
+       first();
+    </script>
+</body>
+</html>
