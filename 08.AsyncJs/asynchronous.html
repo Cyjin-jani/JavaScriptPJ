@@ -17,6 +17,19 @@
         already or not. </p>
     <p>- Determines what happens after the event has happened</p>
     <p>- Implements the concept of a future value that we're expecting</p>
+
+    <h2>About AJAX and APIs</h2>
+    <p>Ajax is Asynchronous Javascript And Xml</p>
+    <p>API is Application Programming Interface</p>
+    <p>There are 3rd-party APIs</p>
+    <ul>
+      <li>Google Maps</li>
+      <li>Embed Youtube videos</li>
+      <li>Weather data</li>
+      <li>Movies data</li>
+      <li>Send email or SMS</li>
+    </ul>  
+
     <script>
         /*
         // what is async js
@@ -97,7 +110,7 @@
         });
        };
 
-       getIDs
+       /*getIDs
        .then(IDs => {
         console.log(IDs);
         return getRecipe(IDs[2]);
@@ -111,7 +124,26 @@
        })
        .catch(error => {
            console.log('error!!!');
-       });
+       });*/
+
+
+        //Consuming promises by using async/await.
+        //Async function always return Promise.
+        //Async is running background synchronously.
+        
+        async function getRecipesAW() {
+          const IDs = await getIDs; //[523, 883, 432, 974]
+          console.log(IDs);
+          const recipe = await getRecipe(IDs[2]);
+          console.log(recipe);
+          const related = await getRelated('Jonas Schmedtmann');
+          console.log(related);
+
+          return recipe;
+        }
+
+        getRecipesAW().then(result => console.log(`${result} is the best ever!`));
+
 
     </script>
 </body>
