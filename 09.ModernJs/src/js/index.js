@@ -14,8 +14,18 @@ import { elements, renderLoader, clearLoader } from './views/base';
 * - shopping list object
 * - liked recipes
 */
+
+/*
+Make the project even better
+1. Implement button to delete all shopping list items.
+
+2. Implement functionality to manually add items to shopping list (using input tag..or smth)
+
+3. Save Shopping list data in local storage
+
+4. Error Handling (Not show errors on alert window)
+*/
 const state = {};
-window.state = state; // for test
 
 //Search Controller
 const controlSearch = async () => {
@@ -227,6 +237,4 @@ elements.recipe.addEventListener('click', e => {
     
 });
 
-//Test
-window.l = new List();
 
