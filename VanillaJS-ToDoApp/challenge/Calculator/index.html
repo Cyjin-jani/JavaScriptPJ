@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+
+  <body>
+    <h1> JS Calculator </h1>
+    
+    <div class="button-wrap">        
+          <input type="text" value="0" disabled>
+          <button class="ac" onclick="allClear()">C</button>            
+          <button class="num">7</button>
+          <button class="num">8</button>
+          <button class="num">9</button>
+          <button class="op" onclick="calculate('+')">+</button>            
+          <button class="num">4</button>
+          <button class="num">5</button>
+          <button class="num">6</button>
+          <button class="op" onclick="calculate('-')">-</button>
+          <button class="num">1</button>
+          <button class="num">2</button>
+          <button class="num">3</button>
+          <button class="op" onclick="calculate('*')">*</button>
+          <button class="zero num">0</button>            
+          <button class="op" onclick="getResult()">=</button>
+          <button class="op" onclick="calculate('/')">/</button>
+    </div>
+  
+
+
+    <script src="./indexver2.js"></script>
+  </body>
+</html>

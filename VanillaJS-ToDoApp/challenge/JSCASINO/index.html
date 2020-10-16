@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+
+  <body>
+    <h1> Random Number Game </h1>
+    <h3> Generate a number between 0 and <span id="rangeValue"></span> </h3>
+    <input id="myRange" type="range" max="200" value="" oninput="onInput()">
+    <br />
+    <span>
+      Guess the number: <input id="numBox" type="number" style="width: 2.5rem;" min="0" max="100"> <button onclick="playGame()">Play!</button>
+    </span>
+
+    <div class="afterPlay">
+    <p>
+      You chose: <span id="chosenVal"></span>, the  machine chose: <span id="answer"></span>
+    </p>
+    
+    <p id="result" style="font-weight: bold;"></p>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
